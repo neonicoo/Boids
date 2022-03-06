@@ -11,13 +11,13 @@ int Flock::getSize()
 }
 
 //Read only method that returns a copy of the Boid.
-Boid Flock::getBoid(int i)
+Boid Flock::getcopyBoid(int i)
 {
     return flock[i];
 }
 
 //Read/write method that returns a reference of the Boid.
-Boid &Flock::getBoid(int i)
+Boid& Flock::getrefBoid(int i)
 {
     return flock[i];
 }
