@@ -13,10 +13,10 @@ Game::Game()
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
     this->window_height = desktop.height;
     this->window_width  = desktop.width;
-    this->window.create(sf::VideoMode(window_width, window_height, desktop.bitsPerPixel), "Boids", sf::Style::None);
+    this->window.create(sf::VideoMode(window_width, window_height, desktop.bitsPerPixel), "Boids");
     
     // Try to achieve 60 FPS.
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(165);
 }
 
 // Run the simulation. Run creates the boids that we'll display, checks for user
@@ -100,10 +100,10 @@ void Game::Render()
         //cout << "Boid Code " << i << " Location: (" << flock.getBoid(i).location.x << ", " << flock.getBoid(i).location.y << ")" << endl;
 
         // Matches up the location of the shape to the boid
-        shapes[i].setPosition(flock.getBoid(i).location.x, flock.getBoid(i).location.y);
+        shapes[i].setPosition(flock.getrefBoid(i).location.x, flock.getrefBoid(i).location.y);
 
         // Calculates the angle where the velocity is pointing so that the triangle turns towards it.
-        float theta = flock.getBoid(i).angle(flock.getBoid(i).velocity);
+        float theta = flock.getrefBoid(i).angle(flock.getrefBoid(i).velocity);
         shapes[i].setRotation(theta);
 
         // Prevent boids from moving off the screen through wrapping
